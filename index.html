@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Officer's War Room</title>
+    <style>
+        /* Minimalist, clean design suitable for reading */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            /* Slight transparency for background effect */
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .heart-box {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .heart {
+            font-size: 4rem;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(233, 30, 99, 0.4));
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .waiting-text {
+            color: #e91e63;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* Background Floating Hearts */
+        .bg-heart {
+            position: fixed;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 192, 203, 0.4);
+            font-size: 20px;
+            z-index: 0;
+            animation: floatUp 15s linear infinite;
+        }
+
+        /* Distance Map Styles */
+        .map-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: flex-start;
+            /* Better alignment fix */
+            justify-content: space-between;
+        }
+
+        .location {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            background: #e91e63;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+        }
+
+        .city-name {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .route-line {
+            position: absolute;
+            top: 28px;
+            /* Manual tweak based on dot size + padding */
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: repeating-linear-gradient(to right, #ccc 0, #ccc 5px, transparent 5px, transparent 10px);
+            z-index: 1;
+            transform: translateY(-12px);
+            /* Shift up to match dot center (dot is 15px + margin) roughly */
+        }
+
+        .plane-icon {
+            position: absolute;
+            top: -10px;
+            /* Center on line */
+            left: 0;
+            font-size: 20px;
+            animation: fly 4s linear infinite alternate;
+        }
+
+        @keyframes fly {
+            0% {
+                left: 0%;
+                transform: scaleX(1);
+            }
+
+            100% {
+                left: 100%;
+                transform: scaleX(1);
+            }
+        }
+
+        .flirty-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            font-style: italic;
+            color: #555;
+        }
+
+        .highlight {
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        @keyframes floatUp {
+            0% {
+                top: 100%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                top: -10%;
+                opacity: 0;
+            }
+        }
+
+        .reasons-list {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .reasons-list li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Hi Akanksha,</h1>
+        <div class="subtitle">Focus. Breathe. You got this.</div>
+
+        <div class="heart-box">
+            <div class="heart">❤️</div>
+            <div class="waiting-text">Counting down each beat between us...</div>
+        </div>
+
+        <div class="map-container">
+            <div class="location">
+                <div class="dot"></div>
+                <div class="city-name">Noida</div>
+            </div>
+            <div class="route-line">
+                <div class="plane-icon">✈️</div>
+            </div>
+            <div class="location">
+                <div class="dot"></div>
+                <div class="city-name">Kushinagar</div>
+            </div>
+        </div>
+
+        <div class="reasons-list">
+            <h3>Why you will be a great Officer:</h3>
+            <ul>
+                <li>Because you have a <strong>golden heart</strong> that loves to help others.</li>
+                <li>Because your discipline and hard work are unmatched.</li>
+                <li>Because you have that <strong>Virat Kohli mentality</strong>—you never give up until you win.</li>
+                <li>Because you have immense potential and you won't let it go to waste—you are meant to do something
+                    meaningful.</li>
+            </ul>
+        </div>
+
+        <div class="flirty-section">
+            <p>P.S. You are breathtakingly beautiful...</p>
+            <p>And honestly? I just want to hold your <span class="highlight">pretty hands</span> forever. They are my
+                favorite place to be.</p>
+        </div>
+
+        <div class="footer">Made with ❤️ by your Engineer</div>
+    </div>
+
+    <script>
+        // No timer needed, just love! 
+        console.log("Love is in the air.");
+
+        function createFloatingHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('bg-heart');
+
+            // Randomize position and size
+            const startLeft = Math.random() * 100;
+            const size = Math.random() * 20 + 10;
+            const duration = Math.random() * 10 + 10;
+
+            heart.style.left = startLeft + 'vw';
+            heart.style.fontSize = size + 'px';
+            heart.style.animationDuration = duration + 's';
+
+            document.body.appendChild(heart);
+
+            // Cleanup
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createFloatingHearts, 500);
+    </script>
+</body>
+
+</html>
